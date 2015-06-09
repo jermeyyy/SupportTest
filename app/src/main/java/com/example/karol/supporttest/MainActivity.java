@@ -50,12 +50,17 @@ public class MainActivity extends AppCompatActivity {
             setupViewPager(viewPager);
         }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                        .setAction("Action", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                fab.setAlpha((fab.getAlpha() == 0.5f ? 1f : 0.5f));
+                            }
+                        }).setActionTextColor(getResources().getColor(R.color.accent_material_light)).show();
             }
         });
 
