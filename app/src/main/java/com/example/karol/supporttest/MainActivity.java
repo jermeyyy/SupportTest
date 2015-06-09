@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new ListFragment(), "ListView");
         adapter.addFragment(new RecyclerViewFragment(), "RecyclerView");
         adapter.addFragment(new CardsFragment(),"Cards");
+        adapter.addFragment(new RecyclerGridFragment(), "Grid");
 
         viewPager.setAdapter(adapter);
     }
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    static class Adapter extends FragmentPagerAdapter {
+    static class Adapter extends FragmentPagerAdapter{
         private final List<Fragment> mFragments = new ArrayList<>();
         private final List<String> mFragmentTitles = new ArrayList<>();
 
@@ -112,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
             mFragments.add(fragment);
             mFragmentTitles.add(title);
         }
+
+
 
         @Override
         public Fragment getItem(int position) {
