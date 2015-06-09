@@ -11,11 +11,11 @@ import butterknife.ButterKnife;
 /**
  * Created by karol on 2015-06-09.
  */
-public class CollapsingViewFragment extends Fragment {
+public class CardsFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.collapsing_view_fragment, container, false);
+        View v = inflater.inflate(R.layout.cards_fragment, container, false);
         ButterKnife.inject(this, v);
 
 

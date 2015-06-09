@@ -1,6 +1,5 @@
 package com.example.karol.supporttest;
 
-import android.app.Activity;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -12,7 +11,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -83,11 +81,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-//        adapter.addFragment(new ListFragment(), "ListFragment 1");
+        adapter.addFragment(new ListFragment(), "ListView");
         adapter.addFragment(new RecyclerViewFragment(), "RecyclerView");
-//        adapter.addFragment(new ListFragment(), "ListFragment 2");
-        adapter.addFragment(new RecyclerViewFragment(), "RecyclerView");
-        adapter.addFragment(new CollapsingViewFragment(),"CollapsingView");
+        adapter.addFragment(new CardsFragment(),"Cards");
 
         viewPager.setAdapter(adapter);
     }
