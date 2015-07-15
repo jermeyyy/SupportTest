@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.tonicartos.superslim.LayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +32,11 @@ public class RecyclerGridFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] values = new String[]{"Test", "Test", "Test",
+        String[] values = new String[]{"TestTestTestTestTest", "Test", "Test",
+                "Test", "Test", "TestTestTestTestTest", "TestTestTestTestTestTestTestTestTestTestTestTest", "Test", "Test",
+                "Test", "TestTestTestTestTestTestTestTestTestTestTestTest", "Test", "Test", "Test", "Test",
                 "Test", "Test", "Test", "Test", "Test", "Test",
-                "Test", "Test", "Test", "Test", "Test", "Test",
-                "Test", "Test", "Test", "Test", "Test", "Test",
-                "Test", "Test", "Test", "Test", "Test", "Test",
+                "Test", "Test", "TestTestTestTestTestTestTestTestTestTestTest", "Test", "Test", "Test",
                 "Test", "Test", "Test", "Test", "Test", "Test",
                 "Test", "Test", "Test", "Test", "Test"};
 
@@ -54,9 +56,9 @@ public class RecyclerGridFragment extends Fragment {
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
-        recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 2));
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(),
-                mList));
+        recyclerView.setLayoutManager(new LayoutManager(getActivity()));
+//        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(), mList));
+        recyclerView.setAdapter(new StickyHeaderGridAdapter(getActivity(), LayoutManager.LayoutParams.HEADER_INLINE | LayoutManager.LayoutParams.HEADER_STICKY));
     }
 
     public static class SimpleStringRecyclerViewAdapter
