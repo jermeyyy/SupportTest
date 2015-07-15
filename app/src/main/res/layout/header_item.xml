@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:orientation="horizontal"
-    android:background="#00483a"
+    android:background="#9d9d9d"
     android:gravity="center"
     app:slm_headerDisplay="inline|sticky"
     app:slm_isHeader="true"

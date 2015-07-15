@@ -31,6 +31,8 @@ public class StickyHeaderGridAdapter extends RecyclerView.Adapter<GridItemViewHo
 
     private final Context mContext;
 
+    private int mColumns = 2;
+
     public StickyHeaderGridAdapter(Context context, int headerMode) {
         mContext = context;
 
@@ -81,8 +83,13 @@ public class StickyHeaderGridAdapter extends RecyclerView.Adapter<GridItemViewHo
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.header_item, parent, false);
         } else {
-            view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.grid_item, parent, false);
+            if(mColumns == 2) {
+                view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.grid_item, parent, false);
+            } else {
+                view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.list_item2, parent, false);
+            }
         }
         return new GridItemViewHolder(view);
     }
@@ -111,19 +118,19 @@ public class StickyHeaderGridAdapter extends RecyclerView.Adapter<GridItemViewHo
             ico1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    mColumns = 1;
                     lp.setColumnWidth(mContext.getResources().getDisplayMetrics().widthPixels);
-                    lp.setSlm(item.sectionManager == LINEAR ? LinearSLM.ID : GridSLM.ID);
-                    lp.setFirstPosition(item.sectionFirstPosition);
                     itemView.setLayoutParams(lp);
+                    notifyDataSetChanged();
                 }
             });
             ico2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    mColumns = 2;
                     lp.setColumnWidth(mContext.getResources().getDisplayMetrics().widthPixels/2);
-                    lp.setSlm(item.sectionManager == LINEAR ? LinearSLM.ID : GridSLM.ID);
-                    lp.setFirstPosition(item.sectionFirstPosition);
                     itemView.setLayoutParams(lp);
+                    notifyDataSetChanged();
                 }
             });
         } else {
@@ -137,7 +144,7 @@ public class StickyHeaderGridAdapter extends RecyclerView.Adapter<GridItemViewHo
             });
         }
         lp.setSlm(item.sectionManager == LINEAR ? LinearSLM.ID : GridSLM.ID);
-        lp.setColumnWidth(mContext.getResources().getDisplayMetrics().widthPixels / 2);
+//        lp.setColumnWidth(mContext.getResources().getDisplayMetrics().widthPixels / 2);
         lp.setFirstPosition(item.sectionFirstPosition);
         itemView.setLayoutParams(lp);
     }
