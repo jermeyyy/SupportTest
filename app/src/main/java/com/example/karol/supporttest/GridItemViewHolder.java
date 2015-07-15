@@ -9,11 +9,13 @@ import android.widget.TextView;
  */
 public class GridItemViewHolder extends RecyclerView.ViewHolder {
 
+    public View mView;
+
     private TextView mTextView;
 
     GridItemViewHolder(View view) {
         super(view);
-
+        mView = view;
         mTextView = (TextView) view.findViewById(android.R.id.text1);
     }
 

@@ -1,6 +1,7 @@
 package com.example.karol.supporttest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -105,9 +106,38 @@ public class StickyHeaderGridAdapter extends RecyclerView.Adapter<GridItemViewHo
 
             lp.headerEndMarginIsAuto = !mMarginsFixed;
             lp.headerStartMarginIsAuto = !mMarginsFixed;
+            View ico1 = holder.mView.findViewById(R.id.ico1);
+            View ico2 = holder.mView.findViewById(R.id.ico2);
+            ico1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    lp.setColumnWidth(mContext.getResources().getDisplayMetrics().widthPixels);
+                    lp.setSlm(item.sectionManager == LINEAR ? LinearSLM.ID : GridSLM.ID);
+                    lp.setFirstPosition(item.sectionFirstPosition);
+                    itemView.setLayoutParams(lp);
+                }
+            });
+            ico2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    lp.setColumnWidth(mContext.getResources().getDisplayMetrics().widthPixels/2);
+                    lp.setSlm(item.sectionManager == LINEAR ? LinearSLM.ID : GridSLM.ID);
+                    lp.setFirstPosition(item.sectionFirstPosition);
+                    itemView.setLayoutParams(lp);
+                }
+            });
+        } else {
+            holder.mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, CollapsingViewActivity.class);
+                    context.startActivity(intent);
+                }
+            });
         }
         lp.setSlm(item.sectionManager == LINEAR ? LinearSLM.ID : GridSLM.ID);
-        lp.setColumnWidth(mContext.getResources().getDimensionPixelSize(R.dimen.grid_column_width));
+        lp.setColumnWidth(mContext.getResources().getDisplayMetrics().widthPixels / 2);
         lp.setFirstPosition(item.sectionFirstPosition);
         itemView.setLayoutParams(lp);
     }

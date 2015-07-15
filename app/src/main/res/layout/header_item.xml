@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:orientation="horizontal"
-    android:background="#00796b"
+    android:background="#00483a"
     android:gravity="center"
     app:slm_headerDisplay="inline|sticky"
     app:slm_isHeader="true"
@@ -26,14 +26,17 @@
         android:id="@+id/ico1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:src="@android:drawable/ic_media_rew"
+        android:padding="16dp"
+        android:src="@drawable/ico_list"
+        android:scaleType="centerInside"
         android:clickable="true"/>
     <ImageView
         android:id="@+id/ico2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:src="@android:drawable/ic_media_ff"
+        android:padding="16dp"
+        android:src="@drawable/ico_grid"
+        android:scaleType="centerInside"
+
         android:clickable="true"/>
 </LinearLayout>
